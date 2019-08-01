@@ -1,0 +1,43 @@
+{
+  "name": "define-variable-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Enhancement of Webpack DefinePlugin to store defined things in actual variables.",
+  "main": "dist/DefineVariablePlugin.js",
+  "repository": "git@github.com:bios21/define-variable-webpack-plugin.git",
+  "author": "Lilian Saget-Lethias <lilian.sagetlethias@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist/",
+    "dynamicImporter.d.ts",
+    "index.d.ts"
+  ],
+  "types": "./index.d.ts",
+  "scripts": {
+    "build": "rimraf dist/* && tsc -P src/"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.3",
+    "@types/tapable": "^1.0.4",
+    "@types/webpack": "^4.4.18",
+    "@wynd/tslint-config-wynd": "^1.1.5",
+    "rimraf": "^2.6.2",
+    "tsconfig-paths": "^3.6.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.25.1"
+  },
+  "peerDependencies": {
+    "webpack": "4.x"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "define",
+    "variable",
+    "import",
+    "define-variable-webpack-plugin"
+  ],
+  "engines": {
+    "node": ">=10"
+  }
+}

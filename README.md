@@ -29,8 +29,6 @@ npm i --save-dev define-variable-webpack-plugin
 
 
 <h2 align="center">Usage</h2>
-
-Dynamic vendor code splitting is a two steps code process. First, you need to setup the plugin in your `webpack` config with desired "lazy" vendors, then import the dynamic importer wherever you need in your code.  
 FYI, the following examples are based on a Typescript code based application.
 
 **webpack.config**
