@@ -1,6 +1,6 @@
 {
   "name": "define-variable-webpack-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enhancement of Webpack DefinePlugin to store defined things in actual variables.",
   "main": "dist/DefineVariablePlugin.js",
   "repository": "git@github.com:bios21/define-variable-webpack-plugin.git",
