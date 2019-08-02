@@ -1,6 +1,7 @@
 import path from 'path';
 import { Compiler, Plugin } from 'webpack';
 import { Stats } from './Stats';
+import { buildContent } from './utils';
 
 export type VarTarget = 'const' | 'window' | 'global';
 export interface Options {
@@ -26,24 +27,7 @@ export class DefineVariablePlugin implements Plugin {
         const statStorage: { data: Map<string, [Error | null, Stats]> } = (ifs as any)._statStorage;
         const readFileStorage: { data: Map<string, [Error | null, string]> } = (ifs as any)._readFileStorage;
 
-        let CONTENT = 'const dynamicImporter = {};\n';
-
-        let target: VarTarget | 'dynamicImporter' = 'dynamicImporter';
-        let value = 'null';
-        for (const [varName, opt] of Object.entries(this.options)) {
-            if (typeof opt === 'string') {
-                value = opt;
-            } else {
-                target = opt.type || 'dynamicImporter';
-                target = target === 'const' ? 'dynamicImporter' : target;
-                value = opt.value;
-            }
-
-            CONTENT += `${target}["${varName}"] = ${value};\n`;
-        }
-
-        CONTENT += 'export { dynamicImporter };\n';
-
+        const CONTENT = buildContent(this.options);
         const PATH = path.resolve(compiler['context'], 'node_modules/define-variable-webpack-plugin/dynamicImporter');
 
         compiler.hooks.normalModuleFactory.tap(this.pluginName, nmf => {
